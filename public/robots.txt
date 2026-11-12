@@ -1,0 +1,9 @@
+# ADVERUNE Search Engine Directives
+# https://adverune.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Primary Sitemap Index
+Sitemap: /sitemap.xml

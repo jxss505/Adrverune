@@ -1,0 +1,4 @@
+# Netlify SPA and API redirect directives
+/api/enquiry        /.netlify/functions/enquiry       200
+/api/enquiry/health /.netlify/functions/health        200
+/*                  /index.html                       200
