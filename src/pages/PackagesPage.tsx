@@ -21,7 +21,9 @@ import {
   Globe,
   BarChart3,
   Check,
-  AlertCircle
+  AlertCircle,
+  TrendingUp,
+  Zap
 } from 'lucide-react';
 
 import { Container } from '../components/common/Container';
@@ -51,105 +53,119 @@ export function PackagesPage({
     }
   };
 
-  // Structured Comparison Matrix Data
+  // Structured Comparison Matrix Data for All 3 Systems
   const comparisonRows = [
     {
       feature: 'Core Advertising (Meta Ads)',
       category: 'Traffic & Media',
-      smallBiz: 'Included (Feed & Story)',
-      mediumBiz: 'Included (Feed, Story, Reels)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Feed & Story)',
+      growth: 'Included (Feed, Story, Reels)',
+      fullGrowth: 'Included (Full-Funnel Omnichannel)'
     },
     {
-      feature: 'Basic Creatives',
+      feature: 'Direct-Response Ad Creatives',
       category: 'Traffic & Media',
-      smallBiz: 'Included (Static Ad Formats)',
-      mediumBiz: 'Included (Direct-Response Variants)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Static Ad Formats)',
+      growth: 'Included (Direct-Response Variants)',
+      fullGrowth: 'Included (Static + Video Cuts)'
     },
     {
       feature: 'Click-to-WhatsApp Architecture',
       category: 'Traffic & Media',
-      smallBiz: 'Included (Direct Message Funnel)',
-      mediumBiz: 'Included (Alternative Flow)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Direct Message Funnel)',
+      growth: 'Included (Alternative Flow)',
+      fullGrowth: 'Included (Custom Routing Protocol)'
     },
     {
       feature: 'WhatsApp Setup & Profile Routing',
       category: 'Lead Capture',
-      smallBiz: 'Included (Greeting & Quick Replies)',
-      mediumBiz: 'Included (Integrated with CRM)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Greeting & Quick Replies)',
+      growth: 'Included (Integrated with CRM)',
+      fullGrowth: 'Included (CRM & API Synchronized)'
     },
     {
       feature: 'Lead Tracking & Pixel Setup',
       category: 'Tracking & Data',
-      smallBiz: 'Included (Standard Conversion Events)',
-      mediumBiz: 'Included (Server-Side Meta CAPI)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Standard Conversion Events)',
+      growth: 'Included (Server-Side Meta CAPI)',
+      fullGrowth: 'Included (Server-Side CAPI & GTM Setup)'
     },
     {
-      feature: 'Basic Google Business Profile',
+      feature: 'Google Business Profile Optimization',
       category: 'Local Presence',
-      smallBiz: 'Included (Profile Audit & Setup)',
-      mediumBiz: 'Included (Enhanced Optimization)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Profile Audit & Setup)',
+      growth: 'Included (Enhanced Optimization)',
+      fullGrowth: 'Included (Comprehensive Authority Setup)'
     },
     {
-      feature: 'Follow-up Templates',
+      feature: 'Follow-up Outreach Scripts & Templates',
       category: 'Sales Enablement',
-      smallBiz: 'Included (Manual Outreach Scripts)',
-      mediumBiz: 'Included (Automated Multi-Channel)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Manual Outreach Scripts)',
+      growth: 'Included (Automated Multi-Channel)',
+      fullGrowth: 'Included (Automated Cadences & Playbooks)'
     },
     {
-      feature: 'Performance Reporting',
+      feature: 'Performance Reporting & Audits',
       category: 'Reporting',
-      smallBiz: 'Included (Bi-Weekly Summary)',
-      mediumBiz: 'Included (Weekly Optimization Sprints)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Included (Bi-Weekly Summary)',
+      growth: 'Included (Weekly Optimization Sprints)',
+      fullGrowth: 'Included (Weekly Sprints & Custom Dashboards)'
     },
     {
       feature: 'Google Ads (High-Intent Search)',
       category: 'Traffic & Media',
-      smallBiz: 'Not Included (Limitation)',
-      mediumBiz: 'Included (Search & PMax)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Not Included (Limitation)',
+      growth: 'Included (Search & PMax)',
+      fullGrowth: 'Included (Search, Display & PMax Scaling)'
     },
     {
       feature: 'Omnichannel Retargeting Sequences',
       category: 'Traffic & Media',
-      smallBiz: 'Not Included (Limitation)',
-      mediumBiz: 'Included (Meta + Google)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Not Included (Limitation)',
+      growth: 'Included (Meta + Google)',
+      fullGrowth: 'Included (Omnichannel Retargeting Across Networks)'
     },
     {
       feature: 'Dedicated Conversion Landing Pages',
       category: 'Lead Capture',
-      smallBiz: 'Not Included (Limitation)',
-      mediumBiz: 'Included (Custom React/Tailwind)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Not Included (Limitation)',
+      growth: 'Included (Mobile-First Landing Page)',
+      fullGrowth: 'Included (Full-Funnel Custom Landing Page Build)'
     },
     {
       feature: 'CRM & Lead Management Pipeline',
       category: 'Sales Enablement',
-      smallBiz: 'Not Included (Limitation)',
-      mediumBiz: 'Included (Pipeline Stages & Routing)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Not Included (Limitation)',
+      growth: 'Included (Pipeline Stages & Routing)',
+      fullGrowth: 'Included (Deal Pipeline, Scoring & Assignment)'
     },
     {
       feature: 'Lead Qualification Gates',
       category: 'Lead Capture',
-      smallBiz: 'Not Included (Limitation)',
-      mediumBiz: 'Included (Multi-Step Friction Filters)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Not Included (Limitation)',
+      growth: 'Included (Multi-Step Friction Filters)',
+      fullGrowth: 'Included (Multi-Step Logic & Qualification)'
     },
     {
       feature: 'Automated Sales & Follow-up Systems',
       category: 'Sales Enablement',
-      smallBiz: 'Not Included (Limitation)',
-      mediumBiz: 'Included (< 5 Min Speed-to-Lead)',
-      tier3: '[UNCONFIRMED]'
+      leadGen: 'Not Included (Limitation)',
+      growth: 'Included (< 5 Min Speed-to-Lead)',
+      fullGrowth: 'Included (Instant Speed-to-Lead SMS, Email & Booking)'
+    },
+    {
+      feature: 'Video and Content Production',
+      category: 'Creative & Assets',
+      leadGen: 'Not Included (Limitation)',
+      growth: 'Not Included (Limitation)',
+      fullGrowth: 'Included (Hook Scripts & Direct Edits)'
+    },
+    {
+      feature: 'Strategic Direction & Oversight',
+      category: 'Account Management',
+      leadGen: 'Standard Technical Support',
+      growth: 'Priority Strategic Support',
+      fullGrowth: 'Included (Dedicated Senior Strategist)'
     }
   ];
 
@@ -191,8 +207,8 @@ export function PackagesPage({
             <div className="max-w-xl mx-auto p-3.5 rounded-xl bg-[#121217]/90 border border-[#22222B] text-left flex items-start gap-3 text-xs text-[#8E8E98]">
               <Lock className="w-4 h-4 text-[#D4AF37] shrink-0 mt-0.5" />
               <div>
-                <span className="font-semibold text-[#D4AF37]">Pricing Policy:</span>{' '}
-                ADVERUNE publishes owner-approved pricing only. Until finalized commercial tiers are confirmed, all packages display <span className="text-amber-400 font-mono">[PRICE TO BE ADDED]</span>.
+                <span className="font-semibold text-[#D4AF37]">Commercial Pricing:</span>{' '}
+                ADVERUNE operates with verified investment ranges (₹15,000 – ₹5,00,000) structured by channel scope and organizational stage. Advertising media spend is paid directly by clients to ad networks.
               </div>
             </div>
           </div>
@@ -215,7 +231,7 @@ export function PackagesPage({
               Most digital agencies sell isolated hours or piecemeal tasks—such as running a single Facebook campaign without lead follow-up. This creates pipeline leakage: you pay for ad clicks, but prospects slip through the cracks before sales reps make contact.
             </p>
             <p className="text-xs sm:text-sm text-[#9E9EA8] leading-relaxed">
-              ADVERUNE designs complete systems. The <span className="text-white font-semibold">Small Business: Lead Generation System</span> establishes immediate, direct customer communication via Core Advertising and WhatsApp. The <span className="text-white font-semibold">Medium Business: Lead + Sales Growth System</span> adds Google Search, omnichannel retargeting, dedicated landing pages, CRM integration, and automated speed-to-lead response sequences.
+              ADVERUNE designs complete systems. The <span className="text-white font-semibold">Lead Generation System</span> (₹15,000 – ₹45,000) establishes immediate, direct customer communication via Core Advertising and WhatsApp. The <span className="text-white font-semibold">Lead + Sales Growth System</span> (₹40,000 – ₹1,25,000) adds Google Search, omnichannel retargeting, dedicated landing pages, CRM integration, and automated speed-to-lead response sequences. The <span className="text-white font-semibold">Full Growth & Performance System</span> (₹1,00,000 – ₹5,00,000) provides comprehensive multi-channel infrastructure, video content production, custom funnels, and advanced attribution.
             </p>
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
@@ -245,7 +261,7 @@ export function PackagesPage({
             eyebrow="Approved Systems"
             title="Commercial Package Matrix"
             goldGradientText="& Inclusions"
-            description="Review the approved foundations for emerging and growing businesses. Package 3 remains unconfirmed."
+            description="Explore our three engineered acquisition packages tailored to match your company's revenue stage and operational capacity."
             className="mb-14"
           />
 
@@ -277,7 +293,7 @@ export function PackagesPage({
               Detailed Deliverables Comparison
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-[#92929D] leading-relaxed">
-              Compare exact features across the approved Small Business and Medium Business foundations. Important limitations are explicitly marked.
+              Compare exact features across the Lead Generation, Lead + Sales Growth, and Full Growth & Performance systems. Critical inclusions and stage boundaries are explicitly marked.
             </p>
           </div>
 
@@ -296,28 +312,29 @@ export function PackagesPage({
                     Service Deliverable / Feature
                   </th>
                   <th scope="col" className="py-4 px-6 font-bold text-white uppercase tracking-wider text-[11px] w-1/5">
-                    Small Business
-                    <span className="block text-[10px] text-[#D4AF37] font-mono font-normal">
-                      Lead Gen System
+                    Lead Generation System
+                    <span className="block text-[11px] text-[#D4AF37] font-mono font-bold mt-0.5">
+                      ₹15,000 – ₹45,000
                     </span>
                   </th>
                   <th scope="col" className="py-4 px-6 font-bold text-[#FFF0BE] uppercase tracking-wider text-[11px] w-1/5 bg-[#181824] border-x border-[#2A2A38]">
-                    Medium Business
-                    <span className="block text-[10px] text-[#D4AF37] font-mono font-normal">
-                      Lead + Sales Growth (Recommended)
+                    Lead + Sales Growth
+                    <span className="block text-[11px] text-[#D4AF37] font-mono font-bold mt-0.5">
+                      ₹40,000 – ₹1,25,000
                     </span>
                   </th>
-                  <th scope="col" className="py-4 px-6 font-bold text-[#A5A5B2] uppercase tracking-wider text-[11px] w-1/5">
-                    [Package 3]
-                    <span className="block text-[10px] text-amber-400 font-mono font-normal">
-                      UNCONFIRMED
+                  <th scope="col" className="py-4 px-6 font-bold text-white uppercase tracking-wider text-[11px] w-1/5">
+                    Full Growth & Performance
+                    <span className="block text-[11px] text-[#D4AF37] font-mono font-bold mt-0.5">
+                      ₹1,00,000 – ₹5,00,000
                     </span>
                   </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#1C1C26]">
                 {comparisonRows.map((row, idx) => {
-                  const isSmallBizLimitation = row.smallBiz.includes('Not Included');
+                  const isLeadGenLimitation = row.leadGen.includes('Not Included');
+                  const isGrowthLimitation = row.growth.includes('Not Included');
 
                   return (
                     <tr
@@ -329,9 +346,9 @@ export function PackagesPage({
                         <span className="text-[10px] text-[#8E8E98] font-mono">{row.category}</span>
                       </th>
 
-                      {/* Small Biz */}
+                      {/* Lead Gen */}
                       <td className="py-3.5 px-6">
-                        {isSmallBizLimitation ? (
+                        {isLeadGenLimitation ? (
                           <div className="flex items-center gap-1.5 text-red-400 font-medium">
                             <XCircle className="w-4 h-4 shrink-0 text-red-400" aria-hidden="true" />
                             <span>Not Included</span>
@@ -339,22 +356,32 @@ export function PackagesPage({
                         ) : (
                           <div className="flex items-center gap-1.5 text-[#D8D8E0]">
                             <CheckCircle2 className="w-4 h-4 shrink-0 text-[#D4AF37]" aria-hidden="true" />
-                            <span>{row.smallBiz}</span>
+                            <span>{row.leadGen}</span>
                           </div>
                         )}
                       </td>
 
-                      {/* Medium Biz (Highlighted Column) */}
+                      {/* Growth (Highlighted Column) */}
                       <td className="py-3.5 px-6 bg-[#14141E] border-x border-[#2A2A38]">
-                        <div className="flex items-center gap-1.5 text-white font-medium">
-                          <CheckCircle2 className="w-4 h-4 shrink-0 text-[#D4AF37]" aria-hidden="true" />
-                          <span>{row.mediumBiz}</span>
-                        </div>
+                        {isGrowthLimitation ? (
+                          <div className="flex items-center gap-1.5 text-red-400 font-medium">
+                            <XCircle className="w-4 h-4 shrink-0 text-red-400" aria-hidden="true" />
+                            <span>Not Included</span>
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-1.5 text-white font-medium">
+                            <CheckCircle2 className="w-4 h-4 shrink-0 text-[#D4AF37]" aria-hidden="true" />
+                            <span>{row.growth}</span>
+                          </div>
+                        )}
                       </td>
 
-                      {/* Tier 3 Unconfirmed */}
-                      <td className="py-3.5 px-6 text-[#9E9EA8] font-mono text-[11px]">
-                        {row.tier3}
+                      {/* Full Growth */}
+                      <td className="py-3.5 px-6 text-[#D8D8E0]">
+                        <div className="flex items-center gap-1.5 text-white font-medium">
+                          <CheckCircle2 className="w-4 h-4 shrink-0 text-[#D4AF37]" aria-hidden="true" />
+                          <span>{row.fullGrowth}</span>
+                        </div>
                       </td>
                     </tr>
                   );
@@ -363,16 +390,16 @@ export function PackagesPage({
                 {/* Investment Row */}
                 <tr className="bg-[#14141E] border-t-2 border-[#262638]">
                   <th scope="row" className="py-4 px-6 font-bold text-white uppercase tracking-wider text-[11px] text-left">
-                    Monthly Management Investment
+                    Investment Range
                   </th>
-                  <td className="py-4 px-6 font-bold text-[#E5E5E8] font-mono">
-                    [PRICE TO BE ADDED]
+                  <td className="py-4 px-6 font-bold text-white font-heading text-sm sm:text-base">
+                    ₹15,000 – ₹45,000
                   </td>
-                  <td className="py-4 px-6 font-bold text-[#D4AF37] font-mono bg-[#181826] border-x border-[#2A2A38]">
-                    [PRICE TO BE ADDED]
+                  <td className="py-4 px-6 font-bold text-[#D4AF37] font-heading text-sm sm:text-base bg-[#181826] border-x border-[#2A2A38]">
+                    ₹40,000 – ₹1,25,000
                   </td>
-                  <td className="py-4 px-6 font-mono text-amber-400">
-                    [PRICE TO BE ADDED]
+                  <td className="py-4 px-6 font-bold text-white font-heading text-sm sm:text-base">
+                    ₹1,00,000 – ₹5,00,000
                   </td>
                 </tr>
 
@@ -388,10 +415,10 @@ export function PackagesPage({
                         onSelectPackage(APPROVED_PACKAGES[0]);
                         onNavigate('contact');
                       }}
-                      aria-label="Inquire about Small Business Lead Generation System package"
-                      className="w-full py-2.5 px-4 rounded-xl bg-[#181820] hover:bg-[#20202B] text-white font-semibold text-xs border border-[#2B2B38] transition-all cursor-pointer min-h-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                      aria-label="Inquire about Lead Generation System package"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#181820] hover:bg-[#20202B] text-white font-semibold text-xs border border-[#2B2B38] hover:border-[#D4AF37]/50 transition-all cursor-pointer min-h-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
                     >
-                      Inquire Small Biz
+                      Inquire Lead Gen
                     </button>
                   </td>
                   <td className="py-4 px-6 bg-[#14141E] border-x border-[#2A2A38]">
@@ -401,14 +428,24 @@ export function PackagesPage({
                         onSelectPackage(APPROVED_PACKAGES[1]);
                         onNavigate('contact');
                       }}
-                      aria-label="Inquire about Medium Business Lead and Sales Growth System package"
-                      className="w-full py-2.5 px-4 rounded-xl bg-[#D4AF37] hover:brightness-110 text-black font-bold text-xs transition-all cursor-pointer shadow-md min-h-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+                      aria-label="Inquire about Lead + Sales Growth System package"
+                      className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFF0BE] via-[#D4AF37] to-[#B8860B] hover:brightness-110 text-black font-bold text-xs transition-all cursor-pointer shadow-md min-h-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
                     >
-                      Inquire Medium Biz
+                      Inquire Growth System
                     </button>
                   </td>
-                  <td className="py-4 px-6 text-xs text-[#9E9EA8] font-mono">
-                    Awaiting Owner Details
+                  <td className="py-4 px-6">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onSelectPackage(APPROVED_PACKAGES[2]);
+                        onNavigate('contact');
+                      }}
+                      aria-label="Inquire about Full Growth & Performance System package"
+                      className="w-full py-2.5 px-4 rounded-xl bg-[#181820] hover:bg-[#20202B] text-white font-semibold text-xs border border-[#2B2B38] hover:border-[#D4AF37]/50 transition-all cursor-pointer min-h-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-[#D4AF37] focus-visible:outline-none"
+                    >
+                      Inquire Full Growth
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -425,115 +462,180 @@ export function PackagesPage({
           <SectionHeading
             eyebrow="Deliverables Breakdown"
             title="Understanding What Is Included"
-            goldGradientText="In Each Foundation"
-            description="A detailed analysis of the core components powering our two approved agency growth systems."
+            goldGradientText="In Each System"
+            description="A detailed analysis of the core components powering our three commercial growth systems."
             className="mb-14"
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Small Business Breakdown */}
-            <div className="matte-card p-8 rounded-2xl border border-[#22222E]">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs font-mono font-bold text-[#D4AF37]">PACKAGE 01 FOUNDATION</span>
-              </div>
-              <h3 className="text-xl font-bold text-white font-heading mb-3">
-                Small Business: Lead Generation System
-              </h3>
-              <p className="text-xs text-[#95959F] leading-relaxed mb-6">
-                Engineered for emerging businesses requiring an immediate, low-friction channel to acquire customer conversations without the overhead of complex CRM pipelines.
-              </p>
-
-              <div className="space-y-4 text-xs">
-                <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
-                  <span className="font-bold text-white block mb-1">Core Advertising (Meta Ads):</span>
-                  <p className="text-[#8E8E98]">
-                    Strategic ad campaigns across Facebook and Instagram targeting localized or demographically refined audiences.
-                  </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Lead Generation System Breakdown */}
+            <div className="matte-card p-7 sm:p-8 rounded-2xl border border-[#22222E] flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-mono font-bold text-[#D4AF37]">PACKAGE 01 FOUNDATION</span>
                 </div>
-
-                <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
-                  <span className="font-bold text-white block mb-1">Click-to-WhatsApp Funnel:</span>
-                  <p className="text-[#8E8E98]">
-                    Ad clicks open a direct WhatsApp conversation, removing the friction of complex web forms for local and service buyers.
-                  </p>
+                <h3 className="text-xl font-bold text-white font-heading mb-2">
+                  Lead Generation System
+                </h3>
+                <div className="text-xs font-mono font-semibold text-[#D4AF37] mb-3">
+                  ₹15,000 – ₹45,000
                 </div>
+                <p className="text-xs text-[#95959F] leading-relaxed mb-6">
+                  Engineered for emerging businesses requiring an immediate, low-friction channel to acquire customer conversations without the overhead of complex CRM pipelines.
+                </p>
 
-                <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
-                  <span className="font-bold text-white block mb-1">WhatsApp Business Setup & Quick Replies:</span>
-                  <p className="text-[#8E8E98]">
-                    We configure your business profile, greeting messages, away alerts, and standard FAQ quick-replies.
-                  </p>
-                </div>
+                <div className="space-y-3.5 text-xs">
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Core Advertising (Meta Ads):</span>
+                    <p className="text-[#8E8E98]">
+                      Strategic ad campaigns across Facebook and Instagram targeting localized or demographically refined audiences.
+                    </p>
+                  </div>
 
-                <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
-                  <span className="font-bold text-white block mb-1">Basic Google Business Profile & Tracking:</span>
-                  <p className="text-[#8E8E98]">
-                    Profile audit and conversion tracking setup so we can measure message starts and ad attribution.
-                  </p>
-                </div>
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Click-to-WhatsApp Funnel:</span>
+                    <p className="text-[#8E8E98]">
+                      Ad clicks open a direct WhatsApp conversation, removing the friction of complex web forms for local and service buyers.
+                    </p>
+                  </div>
 
-                <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
-                  <span className="font-bold text-white block mb-1">Follow-up Outreach Templates:</span>
-                  <p className="text-[#8E8E98]">
-                    Direct-response text and script templates for your team to manually follow up and close conversations.
-                  </p>
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">WhatsApp Business Setup & Quick Replies:</span>
+                    <p className="text-[#8E8E98]">
+                      We configure your business profile, greeting messages, away alerts, and standard FAQ quick-replies.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Basic Google Business Profile & Tracking:</span>
+                    <p className="text-[#8E8E98]">
+                      Profile audit and conversion tracking setup so we can measure message starts and ad attribution.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Follow-up Outreach Templates:</span>
+                    <p className="text-[#8E8E98]">
+                      Direct-response text and script templates for your team to manually follow up and close conversations.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Medium Business Breakdown */}
-            <div className="matte-card p-8 rounded-2xl border-2 border-[#D4AF37]/50 shadow-xl shadow-[#D4AF37]/5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs font-mono font-bold text-[#D4AF37]">PACKAGE 02 FOUNDATION (EXPANDED)</span>
+            {/* Lead + Sales Growth System Breakdown */}
+            <div className="matte-card p-7 sm:p-8 rounded-2xl border-2 border-[#D4AF37]/50 shadow-xl shadow-[#D4AF37]/5 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-mono font-bold text-[#D4AF37]">PACKAGE 02 ACCELERATION</span>
+                </div>
+                <h3 className="text-xl font-bold text-white font-heading mb-2">
+                  Lead + Sales Growth System
+                </h3>
+                <div className="text-xs font-mono font-semibold text-[#D4AF37] mb-3">
+                  ₹40,000 – ₹1,25,000
+                </div>
+                <p className="text-xs text-[#95959F] leading-relaxed mb-6">
+                  Engineered for growing companies that have validated their offering and need multi-channel demand harvesting, dedicated landing pages, and speed-to-lead automation.
+                </p>
+
+                <div className="space-y-3.5 text-xs">
+                  <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
+                    <span className="font-bold text-[#FFF0BE] block mb-1">Includes Lead Generation Foundation, PLUS:</span>
+                    <p className="text-[#8E8E98]">
+                      All core advertising, creative design, tracking, and Google Business Profile foundations are preserved.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
+                    <span className="font-bold text-white block mb-1">Google Ads (Search & Demand Interception):</span>
+                    <p className="text-[#8E8E98]">
+                      Captures high-intent search queries at the exact moment buyers seek solutions, using tight keyword clustering.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
+                    <span className="font-bold text-white block mb-1">Omnichannel Retargeting Sequences:</span>
+                    <p className="text-[#8E8E98]">
+                      Recaptures dropped prospects across Meta and Google display networks with objection-handling creative sequences.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
+                    <span className="font-bold text-white block mb-1">Dedicated Conversion Landing Pages:</span>
+                    <p className="text-[#8E8E98]">
+                      Fast, custom-coded mobile-first landing pages engineered with multi-step qualification gates that eliminate spam.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
+                    <span className="font-bold text-white block mb-1">CRM & Lead Management Pipeline:</span>
+                    <p className="text-[#8E8E98]">
+                      Full deal stage synchronization in your CRM, ensuring complete visibility over lead status and sales rep assignment.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
+                    <span className="font-bold text-white block mb-1">Automated Sales & Follow-up Systems:</span>
+                    <p className="text-[#8E8E98]">
+                      Instant automated response cadences (under 5 minutes) via SMS and email, booking calendar appointments before prospects decay.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white font-heading mb-3">
-                Medium Business: Lead + Sales Growth System
-              </h3>
-              <p className="text-xs text-[#95959F] leading-relaxed mb-6">
-                Engineered for growing companies that have validated their offering and need multi-channel demand harvesting, dedicated landing pages, and speed-to-lead automation.
-              </p>
+            </div>
 
-              <div className="space-y-4 text-xs">
-                <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
-                  <span className="font-bold text-[#FFF0BE] block mb-1">Includes Small Business Foundation, PLUS:</span>
-                  <p className="text-[#8E8E98]">
-                    All core advertising, creative design, tracking, and Google Business Profile foundations are preserved.
-                  </p>
+            {/* Full Growth & Performance System Breakdown */}
+            <div className="matte-card p-7 sm:p-8 rounded-2xl border border-[#2A2A38] hover:border-[#D4AF37]/50 transition-colors flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-mono font-bold text-[#D4AF37]">PACKAGE 03 SCALE & PERFORMANCE</span>
                 </div>
-
-                <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
-                  <span className="font-bold text-white block mb-1">Google Ads (Search & Demand Interception):</span>
-                  <p className="text-[#8E8E98]">
-                    Captures high-intent search queries at the exact moment buyers seek solutions, using tight keyword clustering.
-                  </p>
+                <h3 className="text-xl font-bold text-white font-heading mb-2">
+                  Full Growth & Performance System
+                </h3>
+                <div className="text-xs font-mono font-semibold text-[#D4AF37] mb-3">
+                  ₹1,00,000 – ₹5,00,000
                 </div>
+                <p className="text-xs text-[#95959F] leading-relaxed mb-6">
+                  Engineered for scaling enterprises requiring end-to-end multi-channel paid acquisition, short-form video creative production, custom funnels, and advanced revenue operations.
+                </p>
 
-                <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
-                  <span className="font-bold text-white block mb-1">Omnichannel Retargeting Sequences:</span>
-                  <p className="text-[#8E8E98]">
-                    Recaptures dropped prospects across Meta and Google display networks with objection-handling creative sequences.
-                  </p>
-                </div>
+                <div className="space-y-3.5 text-xs">
+                  <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
+                    <span className="font-bold text-[#FFF0BE] block mb-1">Includes Lead + Sales Growth Foundation, PLUS:</span>
+                    <p className="text-[#8E8E98]">
+                      All Meta, Google Ads, retargeting, WhatsApp routing, and CRM pipeline structures are included.
+                    </p>
+                  </div>
 
-                <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
-                  <span className="font-bold text-white block mb-1">Dedicated Conversion Landing Pages:</span>
-                  <p className="text-[#8E8E98]">
-                    Fast, custom-coded mobile-first landing pages engineered with multi-step qualification gates that eliminate spam.
-                  </p>
-                </div>
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Video and Content Production:</span>
+                    <p className="text-[#8E8E98]">
+                      Hook-focused short-form video scripts, product demo cuts, and continuous direct-response creative iteration.
+                    </p>
+                  </div>
 
-                <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
-                  <span className="font-bold text-white block mb-1">CRM & Lead Management Pipeline:</span>
-                  <p className="text-[#8E8E98]">
-                    Full deal stage synchronization in your CRM, ensuring complete visibility over lead status and sales rep assignment.
-                  </p>
-                </div>
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Advanced Server-Side Attribution:</span>
+                    <p className="text-[#8E8E98]">
+                      First-party server-side tracking (Meta CAPI & GTM server containers) to eliminate cookie decay and restore attribution accuracy.
+                    </p>
+                  </div>
 
-                <div className="p-3.5 rounded-xl bg-[#14141E] border border-[#2B2B38]">
-                  <span className="font-bold text-white block mb-1">Automated Sales & Follow-up Systems:</span>
-                  <p className="text-[#8E8E98]">
-                    Instant automated response cadences (under 5 minutes) via SMS and email, booking calendar appointments before prospects decay.
-                  </p>
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Full-Funnel Custom Landing Page Build:</span>
+                    <p className="text-[#8E8E98]">
+                      Multi-stage interactive qualification environments engineered with friction gates that eliminate low-intent submissions.
+                    </p>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-[#121217] border border-[#1E1E28]">
+                    <span className="font-bold text-white block mb-1">Strategic Growth & Channel Scaling:</span>
+                    <p className="text-[#8E8E98]">
+                      Dedicated senior strategist, omnichannel budget scaling protocols, and weekly optimization sprints.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -561,7 +663,7 @@ export function PackagesPage({
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-white mb-2 font-heading">
-                  Small Business System Is Ideal If:
+                  Lead Generation System Is Ideal If:
                 </h3>
                 <ul className="space-y-2 text-xs text-[#95959F]">
                   <li className="flex items-start gap-2">
@@ -578,7 +680,7 @@ export function PackagesPage({
                   </li>
                   <li className="flex items-start gap-2">
                     <Check className="w-3.5 h-3.5 text-[#D4AF37] shrink-0 mt-0.5" />
-                    <span>You have dedicated team members to manually respond to chat inquiries.</span>
+                    <span>You have team members ready to manually respond to chat inquiries.</span>
                   </li>
                 </ul>
               </div>
@@ -590,7 +692,7 @@ export function PackagesPage({
                   <Layers className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-white mb-2 font-heading">
-                  Medium Business System Is Ideal If:
+                  Lead + Sales Growth System Is Ideal If:
                 </h3>
                 <ul className="space-y-2 text-xs text-[#C5C5D2]">
                   <li className="flex items-start gap-2">
@@ -613,20 +715,32 @@ export function PackagesPage({
               </div>
             </div>
 
-            <div className="matte-card p-6 rounded-2xl flex flex-col justify-between border-dashed border-[#343440] bg-[#101014]/60">
+            <div className="matte-card p-6 rounded-2xl flex flex-col justify-between border border-[#2A2A38] bg-[#101016]">
               <div>
-                <div className="w-10 h-10 rounded-xl bg-[#1A1A22] text-[#80808C] flex items-center justify-center mb-4">
-                  <AlertCircle className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-xl bg-[#1A1A22] text-[#D4AF37] flex items-center justify-center mb-4">
+                  <TrendingUp className="w-5 h-5" />
                 </div>
-                <h3 className="text-base font-bold text-[#A0A0AA] mb-2 font-heading">
-                  [Package 3 - UNCONFIRMED]
+                <h3 className="text-base font-bold text-white mb-2 font-heading">
+                  Full Growth & Performance System Is Ideal If:
                 </h3>
-                <p className="text-xs text-[#80808C] leading-relaxed mb-4">
-                  The third package tier remains unconfirmed by the business owner. No assumptions regarding its scope, target stage, or pricing are made.
-                </p>
-                <div className="p-3 rounded-lg bg-[#141419] border border-[#22222B] text-[11px] font-mono text-amber-400">
-                  Status: Awaiting Owner Approval
-                </div>
+                <ul className="space-y-2 text-xs text-[#95959F]">
+                  <li className="flex items-start gap-2">
+                    <Check className="w-3.5 h-3.5 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <span>You require comprehensive multi-channel paid acquisition across Meta and Google.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-3.5 h-3.5 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <span>You need short-form direct-response video creative production and rapid iteration.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-3.5 h-3.5 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <span>You want custom multi-step funnels with friction gates and server-side tracking.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Check className="w-3.5 h-3.5 text-[#D4AF37] shrink-0 mt-0.5" />
+                    <span>Your sales team needs automated speed-to-lead cadences and CRM pipeline routing.</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -641,8 +755,8 @@ export function PackagesPage({
           <SectionHeading
             eyebrow="Architectural Distinction"
             title="Core Differences Between"
-            goldGradientText="Our Two Systems"
-            description="Transparently contrasting the operational mechanics between the Small and Medium Business packages."
+            goldGradientText="Our Three Systems"
+            description="Transparently contrasting the operational mechanics across the Lead Generation, Lead + Sales Growth, and Full Growth systems."
             className="mb-14"
           />
 
@@ -653,10 +767,10 @@ export function PackagesPage({
               </div>
               <div className="flex-1">
                 <h4 className="text-base font-bold text-white mb-1 font-heading">
-                  Single-Channel vs. Omnichannel Acquisition
+                  Single-Channel Focus vs. Multi-Channel vs. Omnichannel Scale
                 </h4>
                 <p className="text-xs text-[#9595A0] leading-relaxed">
-                  The Small Business system focuses exclusively on Core Advertising (Meta Ads) to maximize budget concentration on social feeds. The Medium Business system pairs Meta Ads with Google Search, intercepting active solution-seekers and capturing high-intent commercial volume simultaneously.
+                  The Lead Generation System concentrates media budget on Core Advertising (Meta Ads) for immediate social volume. The Lead + Sales Growth System pairs Meta Ads with Google Search intent. The Full Growth & Performance System coordinates search, social, short-form video production, and omnichannel retargeting into one unified ecosystem.
                 </p>
               </div>
             </div>
@@ -667,10 +781,10 @@ export function PackagesPage({
               </div>
               <div className="flex-1">
                 <h4 className="text-base font-bold text-white mb-1 font-heading">
-                  Direct Messaging vs. Dedicated Landing Pages & Qualification
+                  Direct Messaging vs. Dedicated Landing Pages vs. Multi-Stage Qualification Funnels
                 </h4>
                 <p className="text-xs text-[#9595A0] leading-relaxed">
-                  Small Business routes prospects straight into a structured WhatsApp chat. Medium Business routes traffic into custom-coded, mobile-first Landing Pages featuring multi-step qualification gates that screen for budget, timeline, and fit before reaching your sales team.
+                  Lead Generation routes prospects straight into a structured WhatsApp chat. Lead + Sales Growth routes traffic into mobile-first landing pages with qualification gates. Full Growth & Performance builds custom multi-step interactive funnels with friction gates and server-side tracking that screen for budget, timeline, and fit.
                 </p>
               </div>
             </div>
@@ -681,10 +795,10 @@ export function PackagesPage({
               </div>
               <div className="flex-1">
                 <h4 className="text-base font-bold text-white mb-1 font-heading">
-                  Manual Templates vs. Automated Speed-to-Lead Workflows
+                  Manual Templates vs. Automated Speed-to-Lead vs. Full Revenue Operations Sync
                 </h4>
                 <p className="text-xs text-[#9595A0] leading-relaxed">
-                  Small Business provides your team with tested outreach templates for manual communication. Medium Business automates the entire process: inquiries trigger automated SMS and email sequences within 5 minutes, synchronizing with your CRM pipeline to eliminate lead decay.
+                  Lead Generation equips your team with tested outreach templates for manual communication. Lead + Sales Growth automates speed-to-lead response sequences within 5 minutes. Full Growth & Performance integrates multi-channel appointment booking, automated deal stage synchronization, and rep assignment directly into your CRM.
                 </p>
               </div>
             </div>
@@ -700,7 +814,7 @@ export function PackagesPage({
           <SectionHeading
             eyebrow="Commercial Clarity"
             title="Packaging & Pricing FAQs"
-            description="Clear answers regarding our pricing policy, ad spend management, and package transitions."
+            description="Clear answers regarding our pricing ranges, ad spend management, and package transitions."
             className="mb-12"
           />
 
@@ -708,8 +822,8 @@ export function PackagesPage({
             items={[
               {
                 id: 'pkg-faq-1',
-                question: 'Why do the packages display [PRICE TO BE ADDED]?',
-                answer: 'In strict compliance with our governance rules, ADVERUNE only publishes verified, business-owner-approved pricing figures. Until the final fee schedule is formally approved, all tiers display [PRICE TO BE ADDED] to ensure full commercial transparency without speculation.'
+                question: 'How is the investment range structured for each system?',
+                answer: 'ADVERUNE packages feature verified investment tiers: Lead Generation System (₹15,000 – ₹45,000), Lead + Sales Growth System (₹40,000 – ₹1,25,000), and Full Growth & Performance System (₹1,00,000 – ₹5,00,000). The exact investment within each range is tailored to your required channel footprint, creative production cadence, and custom technical integrations.'
               },
               {
                 id: 'pkg-faq-2',
@@ -718,13 +832,13 @@ export function PackagesPage({
               },
               {
                 id: 'pkg-faq-3',
-                question: 'Can a client begin with the Small Business system and upgrade later?',
+                question: 'Can a client begin with the Lead Generation System and upgrade later?',
                 answer: 'Yes. Many clients start with the Lead Generation System to establish predictable messaging and immediate lead flow, then transition into the Lead + Sales Growth System once they have sales capacity to handle Google Search, landing pages, and CRM automation.'
               },
               {
                 id: 'pkg-faq-4',
-                question: 'What is the status of Package 3?',
-                answer: 'Package 3 is currently unconfirmed. In accordance with strict project rules, we do not invent its title, inclusions, pricing, or deliverables until supplied and authorized by the business owner.'
+                question: 'What is included in the Full Growth & Performance System?',
+                answer: 'The Full Growth & Performance System (₹1,00,000 – ₹5,00,000) is our comprehensive acquisition infrastructure designed for scaling companies. It includes full omnichannel paid advertising (Meta & Google), short-form direct-response video creative production, custom high-converting landing pages, advanced server-side CAPI tracking, CRM pipeline integration, and automated speed-to-lead response workflows.'
               },
               {
                 id: 'pkg-faq-5',

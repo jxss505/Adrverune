@@ -18,18 +18,18 @@ export function PackageCard({
   onSelect,
   className = ''
 }: PackageCardProps) {
-  const { name, systemName, target, status, pricingNote, features, highlight, isPending } = packageData;
+  const { name, systemName, tierNumber, target, status, pricingNote, features, highlight, isPending } = packageData;
 
   return (
     <div
       className={`
-        relative rounded-2xl p-7 flex flex-col justify-between transition-all duration-300
+        relative rounded-2xl p-6 sm:p-7 flex flex-col justify-between transition-all duration-300
         ${
           highlight
             ? 'bg-gradient-to-b from-[#181822] to-[#0E0E12] border-2 border-[#D4AF37] shadow-2xl shadow-[#D4AF37]/10'
             : isPending
             ? 'bg-[#101015]/60 border border-dashed border-[#343442]'
-            : 'matte-card'
+            : 'matte-card border border-[#22222E] hover:border-[#D4AF37]/40'
         }
         ${className}
       `}
@@ -42,38 +42,50 @@ export function PackageCard({
 
       <div>
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider">{name}</span>
+          <span className="text-xs font-mono font-semibold text-[#D4AF37] uppercase tracking-wider">
+            {tierNumber || 'System Tier'}
+          </span>
           <span
             className={`text-[10px] px-2.5 py-0.5 rounded-full font-mono ${
               isPending
                 ? 'bg-amber-950/40 text-amber-300 border border-amber-800/50'
-                : 'bg-[#191922] text-[#B0B0BA]'
+                : 'bg-[#191922] text-[#B0B0BA] border border-[#2A2A38]'
             }`}
           >
             {status}
           </span>
         </div>
 
-        <h3 className="text-xl font-bold text-white font-heading mb-2">{systemName}</h3>
-        <p className="text-xs text-[#9595A0] leading-relaxed mb-6">{target}</p>
+        <h3 className="text-xl sm:text-2xl font-bold text-white font-heading mb-2 leading-tight">
+          {name}
+        </h3>
+        <p className="text-xs text-[#9595A0] leading-relaxed mb-5">{target}</p>
 
         {/* Pricing / Investment Box */}
-        <div className="p-4 rounded-xl bg-[#131318] border border-[#23232C] mb-6">
-          <div className="text-[10px] font-semibold text-[#8E8E98] uppercase tracking-wider">Investment Level</div>
-          <div className="text-sm font-medium text-white mt-1">
-            {isPending ? (
-              <span className="text-amber-400 font-mono text-xs">
-                [Pricing Unconfirmed - Pending Owner Scope]
-              </span>
-            ) : (
-              <span className="text-[#E0E0E6]">{pricingNote}</span>
-            )}
+        <div className="p-4 sm:p-5 rounded-xl bg-[#131318] border border-[#23232C] mb-6">
+          <div className="text-[10px] font-semibold text-[#8E8E98] uppercase tracking-wider font-mono">
+            Investment Range
+          </div>
+          <div className="mt-2 flex items-baseline gap-1.5 flex-wrap">
+            <span className="text-xl sm:text-2xl font-extrabold text-white font-heading tracking-tight break-words">
+              {isPending ? (
+                <span className="text-amber-400 font-mono text-xs">
+                  [Pricing Unconfirmed - Pending Owner Scope]
+                </span>
+              ) : (
+                pricingNote
+              )}
+            </span>
+          </div>
+          <div className="text-[11px] text-[#7E7E8A] mt-1.5 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] inline-block shrink-0" aria-hidden="true" />
+            <span>Direct media spend paid to ad platforms</span>
           </div>
         </div>
 
         {/* Inclusions */}
         <div className="space-y-3 mb-8">
-          <span className="text-[10px] uppercase tracking-wider font-semibold text-[#A5A5B2] block">
+          <span className="text-[10px] uppercase tracking-wider font-semibold text-[#A5A5B2] block font-mono">
             System Inclusions:
           </span>
           {features.map((feat, idx) => (
@@ -84,7 +96,9 @@ export function PackageCard({
                 }`}
                 aria-hidden="true"
               />
-              <span className={isPending ? 'text-[#9E9EA8]' : ''}>{feat}</span>
+              <span className={feat.startsWith('Everything in') ? 'font-semibold text-white' : ''}>
+                {feat}
+              </span>
             </div>
           ))}
         </div>
@@ -99,18 +113,18 @@ export function PackageCard({
           <button
             type="button"
             onClick={() => onSelect && onSelect(packageData)}
-            aria-label={`Select ${systemName} (${name}) package`}
+            aria-label={`Select ${name} package`}
             className={`
-              w-full py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all
+              w-full py-3.5 px-4 rounded-xl text-xs font-bold uppercase tracking-wider transition-all
               flex items-center justify-center gap-2 cursor-pointer min-h-[44px] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none
               ${
                 highlight
-                  ? 'bg-gradient-to-r from-[#FFF0BE] via-[#D4AF37] to-[#B8860B] text-black hover:brightness-110 shadow-lg shadow-[#D4AF37]/10'
-                  : 'bg-[#181820] text-white border border-[#2B2B38] hover:border-[#D4AF37]/50'
+                  ? 'bg-gradient-to-r from-[#FFF0BE] via-[#D4AF37] to-[#B8860B] text-black hover:brightness-110 shadow-lg shadow-[#D4AF37]/15'
+                  : 'bg-[#181820] text-white border border-[#2B2B38] hover:border-[#D4AF37]/50 hover:bg-[#1E1E28]'
               }
             `}
           >
-            <span>Select {systemName}</span>
+            <span>Select {name}</span>
             <ArrowRight className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
           </button>
         )}

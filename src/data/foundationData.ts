@@ -199,12 +199,13 @@ export const APPROVED_SERVICES: ServiceItem[] = [
 
 export const APPROVED_PACKAGES: PackageTier[] = [
   {
-    id: 'small-business',
-    name: 'Small Business',
+    id: 'lead-generation-system',
+    name: 'Lead Generation System',
     systemName: 'Lead Generation System',
+    tierNumber: 'Package 01',
     target: 'Emerging businesses seeking consistent, qualified inbound inquiries via direct messaging & core advertising.',
-    status: 'Approved Foundation',
-    pricingNote: '[PRICE TO BE ADDED]',
+    status: 'Foundation Tier',
+    pricingNote: '₹15,000 – ₹45,000',
     features: [
       'Core advertising (Meta Ads)',
       'Basic creatives (Static ad formats)',
@@ -218,38 +219,44 @@ export const APPROVED_PACKAGES: PackageTier[] = [
     highlight: false
   },
   {
-    id: 'medium-business',
-    name: 'Medium Business',
+    id: 'lead-sales-growth-system',
+    name: 'Lead + Sales Growth System',
     systemName: 'Lead + Sales Growth System',
+    tierNumber: 'Package 02',
     target: 'Growing businesses ready to expand across Google Search, retargeting, and automated sales pipelines.',
-    status: 'Approved Foundation (Recommended)',
-    pricingNote: '[PRICE TO BE ADDED]',
+    status: 'Recommended',
+    pricingNote: '₹40,000 – ₹1,25,000',
     features: [
-      'Everything in the Small Business foundation, plus:',
+      'Everything in Lead Generation System, plus:',
       'Google Ads (Search & high-intent demand harvesting)',
       'Retargeting (Omnichannel remarketing pools)',
       'Dedicated conversion landing pages (Mobile-first)',
       'CRM and lead management pipeline setup',
       'Lead qualification gates & friction filters',
-      'Automated sales and follow-up system (Speed-to-lead <5 min)'
+      'Automated sales and follow-up system (Speed-to-lead <5 min)',
+      'Weekly optimization sprints & KPI reporting'
     ],
     highlight: true
   },
   {
-    id: 'package-3-unconfirmed',
-    name: '[Package 3 - UNCONFIRMED]',
-    systemName: '[Third Tier - Pending Business Owner Approval]',
-    target: 'Specifications and scope unconfirmed. To be supplied by business owner.',
-    status: 'UNCONFIRMED',
-    pricingNote: '[PRICE TO BE ADDED]',
+    id: 'full-growth-performance-system',
+    name: 'Full Growth & Performance System',
+    systemName: 'Full Growth & Performance System',
+    tierNumber: 'Package 03',
+    target: 'Scaling companies requiring complete omnichannel paid media, video creative production, custom funnels, and CRM automation.',
+    status: 'Enterprise Scale',
+    pricingNote: '₹1,00,000 – ₹5,00,000',
     features: [
-      '[Package name unconfirmed]',
-      '[Pricing to be confirmed by business owner]',
-      '[Service inclusions unconfirmed]',
-      '[Deliverables to be supplied upon owner approval]'
+      'Everything in Lead + Sales Growth System, plus:',
+      'Video and content production (Hook scripts & direct edits)',
+      'Advanced server-side tracking (Meta CAPI & GTM setup)',
+      'Full-funnel custom landing page development',
+      'Multi-channel appointment booking & SMS/Email cadences',
+      'Omnichannel scaling protocols across Meta & Google',
+      'Dedicated senior strategist & priority channel management'
     ],
     highlight: false,
-    isPending: true
+    isPending: false
   }
 ];
 

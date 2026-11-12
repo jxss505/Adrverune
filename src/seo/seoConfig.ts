@@ -140,14 +140,15 @@ export const SEO_PAGES: Record<NavRoute, PageSEO> = {
   packages: {
     route: 'packages',
     path: '/packages',
-    title: 'Service Packages & Lead Systems | ADVERUNE Advertising',
-    description: "Compare ADVERUNE's structured service packages: Small Business Lead Generation System and Medium Business Lead + Sales Growth System.",
+    title: 'Service Packages & Growth Systems | ADVERUNE Advertising',
+    description: "Compare ADVERUNE's 3 structured acquisition packages: Lead Generation System (₹15,000 – ₹45,000), Lead + Sales Growth System (₹40,000 – ₹1,25,000), and Full Growth & Performance System (₹1,00,000 – ₹5,00,000).",
     h1: 'Structured Growth Systems. Engineered for Scalable Acquisition.',
     ogType: 'website',
     keywords: [
       'digital marketing packages',
       'lead generation system',
       'lead and sales growth system',
+      'full growth performance system',
       'B2B advertising package',
       'agency service tiers'
     ],
@@ -164,14 +165,20 @@ export const SEO_PAGES: Record<NavRoute, PageSEO> = {
           {
             '@type': 'ListItem',
             position: 1,
-            name: 'Package 1: Small Business (Lead Generation System)',
-            description: 'Core advertising, basic creatives, WhatsApp setup, lead tracking, Google Business profile, and follow-up templates.'
+            name: 'Package 1: Lead Generation System',
+            description: 'Core advertising, basic creatives, WhatsApp setup, lead tracking, Google Business profile, and follow-up templates (₹15,000 – ₹45,000).'
           },
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Package 2: Medium Business (Lead + Sales Growth System)',
-            description: 'Includes Small Business foundation plus Google Ads, retargeting, landing pages, CRM management, lead qualification, and sales systems.'
+            name: 'Package 2: Lead + Sales Growth System',
+            description: 'Includes Lead Generation foundation plus Google Ads, retargeting, landing pages, CRM management, lead qualification, and sales systems (₹40,000 – ₹1,25,000).'
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: 'Package 3: Full Growth & Performance System',
+            description: 'Includes Lead + Sales Growth plus video production, advanced server-side CAPI tracking, full-funnel custom landing pages, and senior strategist oversight (₹1,00,000 – ₹5,00,000).'
           }
         ]
       }

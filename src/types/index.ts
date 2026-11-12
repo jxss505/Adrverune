@@ -39,6 +39,7 @@ export interface PackageTier {
   pricingNote: string;
   features: string[];
   highlight: boolean;
+  tierNumber?: string;
   isPending?: boolean;
 }
 
