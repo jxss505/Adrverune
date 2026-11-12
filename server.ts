@@ -40,12 +40,13 @@ app.use(express.urlencoded({ extended: true, limit: '100kb' }));
 // Comprehensive Security Headers Middleware
 app.use((_req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
-  res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  if (isProd) {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
   
-  // Content Security Policy permitting required assets (Google Fonts, GA4, self)
+  // Content Security Policy permitting required assets (Google Fonts, GA4, self, preview iframe)
   const cspDirectives = [
     "default-src 'self'",
     "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
@@ -53,7 +54,7 @@ app.use((_req, res, next) => {
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: https:",
     "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://*.supabase.co wss://*.supabase.co",
-    "frame-ancestors 'self'",
+    "frame-ancestors 'self' https://*.google.com https://*.google.dev https://*.run.app https://*.netlify.app",
     "base-uri 'self'",
     "form-action 'self'"
   ];
